@@ -136,27 +136,35 @@
                 //邪魔な要素を隠す
                 if (reviewAreaNum > 0){
                     for (var i = 0; i < reviewAreaNum; i++){
-                        var aTags = reviewArea[i].parentNode.getElementsByTagName("a");
+                        var parentNode = reviewArea[i].parentNode;
+                        var aTags = parentNode.getElementsByTagName("a");
                         var tmp;
                         for (var j = 0, l = aTags.length; j < l; j++){
                             tmp = aTags[j].href;
                             tmp = XHRURL + tmp;
                             aTags[j].href = tmp;
                         }
-                        var imgTags = reviewArea[i].parentNode.getElementsByTagName("img");
+                        var imgTags = parentNode.getElementsByTagName("img");
                         for (var j = 0, l = imgTags.length; j < l; j++){
-                            tmp = imgTags[j].src;
-                            tmp = XHRURL + tmp;
-                            imgTags[j].src = tmp;
                             imgTags[j].setAttribute("style", "border: 0px!important;");
                         }
-                        var spanTags = reviewArea[i].parentNode.getElementsByTagName("span");
+                        var spanTags = parentNode.getElementsByTagName("span");
                         for (var j = 0, l = spanTags.length; j < l; j++){
                             spanTags[j].setAttribute("style", "display:none;");
                         }
-                        var divTags = reviewArea[i].parentNode.getElementsByTagName("div");
+                        var divTags = parentNode.getElementsByTagName("div");
                         for (var j = 0, l = divTags.length; j < l; j++){
                             divTags[j].removeAttribute("style");
+                        }
+                        var log_lists = parentNode.getElementsByClassName("log_list_info");
+                        for (var j = 0, len = log_lists.length; j < len; j++){
+                            var log_list = log_lists[j];
+                            log_list.parentNode.removeChild(log_list);
+                        }
+                        var textAreas = parentNode.getElementsByClassName("res_post_area");
+                        for (var j = 0, len = textAreas.length; j < len; j++){
+                            var textArea = textAreas[j];
+                            textArea.parentNode.removeChild(textArea);
                         }
                     }
                 }
