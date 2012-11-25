@@ -3,7 +3,7 @@
 // @namespace      http://web.zgo.jp/
 // @include        http://www.amazon.co.jp/*
 // @description    Amazonの書籍ページに読書メーターの感想を表示
-// @resource css   https://raw.github.com/azu/usconfig/v1.2.1/usconfig.css.template
+// @resource css   https://raw.github.com/azu/amazon_cross_meter/master/amazon_cross_meter.css
 // ==/UserScript==
 (function(){
     /* config */
@@ -182,7 +182,6 @@
                         contentView = false;
                         divTagMain.setAttribute("style", hidden);
                     }
-                    var i = 0
                     for (var i = 0; i < reviewAreaNum; i++){
                         var tmpObj = reviewArea[i].parentNode.cloneNode(true);
                         divReviewContent.appendChild(tmpObj);
